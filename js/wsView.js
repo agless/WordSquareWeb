@@ -4,6 +4,7 @@ var view = {
      * Member variables
      **********************/
 
+    // A grid of pointers to the gameboard cells.
     gameBoard: Array(6),
     
     /**********************
@@ -67,6 +68,10 @@ var view = {
     },
 
     _renderChar(row, column, character) {
+        /**
+         * A valid word square reflects across the diagonal,
+         * so most characters are added in two cells.
+         */
         character = character.toUpperCase();
         $(this.gameBoard[row][column]).text(character);
         $(this.gameBoard[column][row]).text(character);
@@ -112,6 +117,7 @@ var view = {
         $(document).keydown(function(event) {
             // Send key presses to controller
             if (event.key != 'F12') {
+                // Don't interrupt attempts to open the console.
                 event.preventDefault();
                 controller.keyPress(event.key);
             }

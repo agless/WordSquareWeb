@@ -1,5 +1,5 @@
 /*********************************************************************
- * Controller provides an interface between the model and view.
+ * Controller provides interaction between the model and view.
  *********************************************************************/
 
 var controller = {
@@ -33,11 +33,15 @@ var controller = {
 
     keyPress: function (key) {
         /**
-         * Called by view to handle keyboard input
+         * Called by view to handle keyboard input.
+         * Handles arrows, tabs, backspace, delete,
+         * enter, and character key input.
          */ 
-        if (!this.editing) return;
+        if (!this.editing) {
+            // Ignore key presses when not 'editing'.
+            return;
+        }
         else {
-            // Handle arrows, tabs, backspace, enter, and character key input
             if ((key >= 'a') && (key <= 'z')) {
                 this.gameBoard[this.r][this.c] = key;
                 this.gameBoard[this.c][this.r] = key;
@@ -83,8 +87,9 @@ var controller = {
                 The trick is figuring out which letters belong
                 to the words from the rows above, and which are
                 subject to deletion by backspace.
-                (Could just jump up a row when c < r)
-                (Or, skip this cell if [r-1][c] isn't empty)
+                (Could just jump up a row when c < r, but this doesn't
+                account for user entering words out of order.)
+                (Or, skip this cell if [r-1][c] also isn't empty)
                  */
                 this.gameBoard[this.r][this.c] = '';
                 this.gameBoard[this.c][this.r] = '';
@@ -101,7 +106,8 @@ var controller = {
     clear: function () {
         /**
          * Called by view when user presses the 'Clear' button.
-         * Clears all data from the model and view.
+         * Clears all user-input data from the model, view and
+         * controller.
          */
         model.clear();
         this._clear();
@@ -118,9 +124,11 @@ var controller = {
          * Retrieves the requested solution from model and calls view
          * to update display elements.
          */
-        if (index >= this.solutionCount) index = this.solutionCount;
-        else if (index < 0) index = 0;
-        view.renderGameBoard(model.getSolution(index));
+        if (index >= this.solutionCount) index = this.solutionCount - 1;
+        else if (index <= 1) index = 0;
+        else index--;
+        this.currentSolution = index;
+        view.renderGameBoard(model.getSolution(this.currentSolution));
         view.removeEditing();
         view.renderSolutionIndex(this.currentSolution + 1);
     },
@@ -190,6 +198,9 @@ var controller = {
      *******************/
 
     _clear: function () {
+        /*
+         * Resets member variables for this controller.
+         */
         this.r = 0;
         this.c = 0;
         this._clearGameBoard();
@@ -199,6 +210,11 @@ var controller = {
     },
     
     _attemptSubmit: function () {
+        /**
+         * Constructs words from the User-input characters to form
+         * a partial word square and attempts to submit the 
+         * User-input words to the model
+         */
         let i = 0;
         let j = 0;
         let words = Array(6).fill('');
@@ -209,9 +225,9 @@ var controller = {
             if (words[i].length > len) len = words[i].length;
             i++;
         }
-        words.forEach(function(word, index) {
-            if (word.length == len) {
-                if (!model.addSquareWord(word, index)) {
+        for (let i = 0; i < words.length; i++) {
+            if (words[i].length == len) {
+                if (!model.addSquareWord(words[i], i)) {
                     alert("Something went wrong!\n" + 
                         "Make sure all words are the same length and\n" + 
                         "your word square begins in the top left corner of the grid.");
@@ -219,12 +235,14 @@ var controller = {
                     return false;
                 }
             }
-        });
+        };
         return true;
     },
 
     _showPartialSquare: function () {
-        // Build the partial word square for display
+        /**
+         * Builds the User-input partial word square for display
+         */
         let squareWords = Array(6);
         for (let i = 0; i < 6; i++) {
             let word = '';
@@ -239,6 +257,10 @@ var controller = {
     },
 
     _goToNextEditable: function () {
+        /**
+         * Advances the cursor to the next non-fixed gameboard
+         * cell based on words already input by User
+         */
         while (this.gameBoard[this.r][this.c] != '') {
             if (this.c < 5) this.c++;
             else if (this.r < 5) {
@@ -254,6 +276,9 @@ var controller = {
     },
 
     _clearGameBoard: function () {
+        /**
+         * Creates a blank gamegoard.
+         */
         for (let i = 0; i < 6; i++) {
             this.gameBoard[i] = Array(6).fill('');
         }
