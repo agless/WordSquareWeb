@@ -1,0 +1,40 @@
+#play-area {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5px;
+    width: 400px;
+    height: 300px;
+    border: 1px solid black;
+}
+
+td {
+    border: 1px solid gray;
+    width: 30px;
+    height: 30px;
+}
+
+#title {
+    text-align: center;
+}
+
+#game-table {
+    float: left;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    font-family: monospace;
+    font-size: 150%;
+    text-align: center;
+}
+
+#button-container {
+    width: 100px;
+    margin-left: 210px;
+    border: none;
+}
+
+button {
+    padding: 3px;
+    margin-top: 3px;
+    width: 70px;
+}

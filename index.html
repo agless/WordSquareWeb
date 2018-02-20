@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Word Square</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <!-- Document -->
+        <div>
+            <nav></nav>
+            <div><!-- Insert a description of what a 'Word Square' is and how to play. Position to the left of the play area. --></div>
+            <div id="play-area">
+                <h2 id="title">Word Square</h2>
+                <table id="game-table">
+                    <thead></thead>
+                    <tbody id="game-board">
+                        <tr>
+                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>
+                <div id="button-container">
+                    <button id="search-button">Search</button>
+                    <button id="next-button">Next</button>
+                    <button id="previous-button">Previous</button>
+                    <button id="clear-button">Clear</button>
+                </div>
+            </div>
+            <div><!-- Insert a description of the ternary tree algorithm that makes this possible.  Position to the right of the play area --></div>
+            <div id="extra-features"></div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="js/ternaryTree.js"></script>
+        <script src="js/wsModel.js"></script>
+        <script src="js/wsView.js"></script>
+        <script src="js/wsController.js"></script>
+    </body>
+</html>
