@@ -24,11 +24,11 @@ var view = {
     },
 
     renderSolutionIndex: function (index) {
-        //
+        $('#solution-index-input').val(index);
     },
 
     renderSolutionCount: function (count) {
-        //
+        $('#solution-count').text('of ' + count);
     },
 
     renderPatternMatchResults: function (results) {
@@ -124,6 +124,11 @@ var view = {
             // Request controller to clear all
             event.preventDefault();
             controller.clear();
+        });
+
+        $('#solution-index-input').change(function (event) {
+            // Request the solution by index from controller
+            controller.getSolution(this.value);
         });
 
         $(document).keydown(function(event) {
