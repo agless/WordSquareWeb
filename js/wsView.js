@@ -36,7 +36,19 @@ var view = {
     },
 
     renderPrefixMatchResults: function (results) {
-        //
+        /* This is taking too long for the first two characters, because
+        we're adding so many results to the DOM.  Need to either artifically
+        trim the list or figure out how to add them without locking up the browser.
+
+        Add in batches?
+         */
+        let timer = Date.now();
+
+        let listInsert = '<li>' + results.join('</li><li>') + '</li>';
+
+        $('#prefix-match-results').empty().append(listInsert);
+
+        console.log(((Date.now() - timer) / 1000) + ' seconds to add ' + results.length +'  results to the DOM.');
     },
 
     renderEditing: function (row, cursor) {
@@ -118,9 +130,14 @@ var view = {
             // Send key presses to controller
             if (event.key != 'F12') {
                 // Don't interrupt attempts to open the console.
-                event.preventDefault();
+                // event.preventDefault();
                 controller.keyPress(event.key);
             }
+        });
+
+        $('#prefix-match').on('input', function(event) {
+            // Request prefix matches on User input
+            controller.getPrefixMatches(this.value);
         });
 
         /***********************

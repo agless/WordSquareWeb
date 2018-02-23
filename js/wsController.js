@@ -21,6 +21,12 @@ var controller = {
      * API-like methods
      ***********************/
     
+    init: function () {
+        //
+        this._clearGameBoard();
+        view.renderEditing(this.r, this.c);
+    },
+    
     gameBoardClick: function (row, column) {
         /**
          * Called by view when User clicks the game board
@@ -39,6 +45,13 @@ var controller = {
          */ 
         if (!this.editing) {
             // Ignore key presses when not 'editing'.
+
+            /**
+             * Actually, might be nice if arrow keys
+             * could be used to see the next and previous
+             * solutions while not in editing mode.
+             */
+
             return;
         }
         else {
@@ -193,10 +206,19 @@ var controller = {
         view.renderSolutionIndex(this.currentSolution + 1);
     },
 
+    getPrefixMatches: function (prefix) {
+        let matches = this.searchTree.matchPrefix(prefix);
+        let message = matches.length;
+        (message == 1) ? message += ' match.' : message += ' matches.';
+        matches.splice(0, 0, message);
+        if (matches.length < 1000) view.renderPrefixMatchResults(matches);
+        else view.renderPrefixMatchResults([matches.slice(0, 1), 'Click to show.']);
+    },
+
     /*******************
      * Helper methods
      *******************/
-
+    
     _clear: function () {
         /*
          * Resets member variables for this controller.
@@ -322,12 +344,6 @@ $.ajax({
 });
 
 /**********************
- * Initialize gameboard
- **********************/
-
-controller._clearGameBoard();
-
-/**********************
  * Initialize model
  **********************/
 
@@ -339,3 +355,9 @@ model.searchTree = controller.searchTree;
  **********************/
 
 view.init();
+
+/**********************
+ * Initialize controller
+ **********************/
+
+controller.init();

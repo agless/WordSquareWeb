@@ -104,6 +104,7 @@ TernaryTree.prototype.matchPrefix = function (prefix) {
      */
     let nd = this._getFinalNode(prefix, 0, this.head);
     let keySet = [];
+    if (nd == undefined) return keySet;
     if (nd.valid) keySet.push(prefix);
     if (nd.equal != undefined) this._getBranchWords(nd.equal, prefix, keySet);
     return keySet;
