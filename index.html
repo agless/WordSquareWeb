@@ -2,59 +2,139 @@
 <html>
     <head>
         <title>Word Square</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="styles.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
         <!-- Document -->
         <div>
             <nav></nav>
-            <div><!-- Insert a description of what a 'Word Square' is and how to play. Position to the left of the play area. --></div>
-            <div id="play-area">
-                <h2 id="title">Word Square</h2>
-                <table id="game-table">
-                    <thead></thead>
-                    <tbody id="game-board">
-                        <tr>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                    </tbody>
-                    <tfoot></tfoot>
-                </table>
-                <div id="button-container">
-                    <button id="search-button">Search</button>
-                    <button id="next-button">Next</button>
-                    <button id="previous-button">Previous</button>
-                    <button id="clear-button">Clear</button>
-                    <input type="number" id="solution-index-input">
-                    <p id="solution-count"></p>
+            <div class="row">
+                <!-- Description column -->
+                <div class="col-sm-4">
+                    <h4>What is a word square?</h4>
+                    <p>A word square is a collection of letters that makes the same words,
+                        whether read accross or down, like this:
+    <pre>
+    TEST
+    ECHO
+    SHOW
+    TOWN
+    </pre>
+                    </p>
+                    <p>In a valid word square, all words must be the same length,
+                        and the number of words equals the length of the words.
+                    </p>
+                    <h4>How do I play?</h4>
+                    <p>Click an empty cell on the game board and start typing.</p>
+                    <p>Make sure that each word begins in the first column, but you may
+                        leave empty rows.
+                    </p>
+                    <p>As you type, notice that your letters will appear in more than one cell.
+                        The trick to making a word square is finding words that contain the same letters
+                        where the words overlap.
+                    </p>
+                    <p>Stick with shorter words at first.  If you get stuck, press 'Search' and 
+                        let the computer fill in the blanks.  You may be surprised how many valid 
+                        solution can be found, though some of the words may be very obscure. 
+                    </p>
+                    <h4>Where did you find these words?</h4>
+                    <p></p>
                 </div>
-            </div>
-            <div><!-- Insert a description of the ternary tree algorithm that makes this possible.  Position to the right of the play area --></div>
-            <div id="extra-features">
-                <h4>Bonus Features</h4>
-                    <p>Prefix match:</p>
-                    <input type="text "id="prefix-match">
-                    <ul id="prefix-match-results"></ul>
+                <!-- Play area column -->
+                <div class="col-sm-4">
+                    <div id="play-area">
+                        <h2 class="title">Word Square</h2>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <table id="game-table">
+                                    <thead></thead>
+                                    <tbody id="game-board">
+                                        <tr>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot></tfoot>
+                                </table>
+                            </div>
+                            <div class="col-sm-6">
+                                <div id="button-container">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <button id="search-button">Search</button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button id="clear-button">Clear</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <button id="previous-button">Previous</button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button id="next-button">Next</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input type="number" id="solution-index-input"/>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label id="solution-count"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <h4 class="title">Bonus Features</h4>
+                <div class="row" id="extra-features">
+                    <div class="col-sm-6">
+                        <p>Prefix match:</p>
+                        <input type="text "id="prefix-match" />
+                        <ul id="prefix-match-results"></ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Pattern match <br>(use '.' for wildcard):</p>
+                        <input type="text" id="pattern-match" />
+                        <ul id="pattern-match-results"></ul>
+                    </div>
+                </div>
+                </div>
+                <!-- Inner workings column -->
+                <div class="col-sm-4">
+                    <h4>How does this work?</h4>
+                    <p>The alorithm to build word squares identifies empty spaces
+                        and searches the english language for all words matching the
+                        pattern created by each word's intersection with the others.
+                    </p>
+                    <p>A <a href="https://en.wikipedia.org/wiki/Ternary_search_tree">ternary search tree</a> 
+                        is used to provide ultra-fast pattern matching results.  The search tree for this website can typically find all of the words matching
+                        a given pattern in less than 10 milliseconds! 
+                    </p>
+                </div>
             </div>
         </div>
 
         <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="js/ternaryTree.js"></script>
         <script src="js/wsModel.js"></script>
         <script src="js/wsView.js"></script>

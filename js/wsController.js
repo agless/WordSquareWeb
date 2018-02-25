@@ -237,6 +237,20 @@ var controller = {
          * a partial word square and attempts to submit the 
          * User-input words to the model
          */
+        
+        /*
+        Would be cool if User submits a complete word square,
+        to check whether all of the words exist in the
+        searchTree and if so congratulate the User for finding
+        a solution. 
+
+        Could also score the User words, and compare to the average score
+        for all complete puzzles for each of the component words to give
+        User a relative score for the weight of this puzzle.  Or something.
+        A score / game would make this more palatable.
+        */
+        
+        
         let i = 0;
         let j = 0;
         let words = Array(6).fill('');
