@@ -1,31 +1,85 @@
-
 #play-area {
     border: 1px solid black;
-    padding: 5px;
 }
 
 td {
     border: 1px solid gray;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
 }
 
 button {
-    width: 100px;
-    margin-bottom: 5px;
+    width: inherit;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
 .title {
     text-align: center;
 }
 
+.centered {
+    float: none;
+    margin: 0 auto;
+}
+
 #game-table {
     border: 1px solid black;
     font-family: monospace;
-    font-size: 150%;
+    font-size: 200%;
     text-align: center;
 }
 
 #solution-index-input {
     width: 70px;
+}
+
+#menu-toggle {
+    width: 40px;
+}
+
+body {
+overflow-x: hidden;
+}
+
+#wrapper {
+padding-left: 0;
+-webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+-o-transition: all 0.5s ease;
+transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+padding-left: 250px;
+}
+
+#sidebar-wrapper {
+z-index: 1000;
+position: absolute;
+left: 250px;
+width: 0;
+height: 100%;
+margin-left: -250px;
+overflow-y: auto;
+-webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+-o-transition: all 0.5s ease;
+transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+width: 250px;
+}
+
+#page-content-wrapper {
+min-width: 500px;
+max-width: 600px;
+margin: auto;
+padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+position: absolute;
+margin-right: -250px;
 }

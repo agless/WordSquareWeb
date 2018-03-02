@@ -190,7 +190,7 @@ var controller = {
          * Calls the view to update with the first solution in the list and
          * new solution count and index.
          */
-        if (!this._attemptSubmit()) return;
+        if ((!this.editing) || (!this._attemptSubmit())) return;
         this.editing = false;
         model.buildSolutions();
         this.currentSolution = 0;
@@ -356,6 +356,7 @@ $.ajax({
         }
     });
 });
+
 
 /**********************
  * Initialize model

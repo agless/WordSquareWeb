@@ -1,128 +1,196 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Word Square</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="styles.css">
+        
+        <title>Word Square</title>
+        
     </head>
     <body>
-        <nav></nav> <!-- Make a navbar header. -->
-        <div class="container-fluid text-left">
-            <div class="row content">
-                <div class="col-sm-3" id="about-slideout">
-                    <h4>What is a word square?</h4>
-                    <p>A word square is a collection of letters that makes the same words,
-                        whether read accross or down, like this:
-    <pre>
-    TEST
-    ECHO
-    SHOW
-    TOWN
-    </pre>
-                    </p>
-                    <p>In a valid word square, all words must be the same length,
-                        and the number of words equals the length of the words.
-                    </p>
-                    <h4>How do I play?</h4>
-                    <p>Click an empty cell on the game board and start typing.</p>
-                    <p>Make sure that each word begins in the first column, but you may
-                        leave empty rows.
-                    </p>
-                    <p>As you type, notice that your letters will appear in more than one cell.
-                        The trick to making a word square is finding words that contain the same letters
-                        where the words overlap.
-                    </p>
-                    <p>Stick with shorter words at first.  If you get stuck, press 'Search' and 
-                        let the computer fill in the blanks.  You may be surprised how many valid 
-                        solution can be found, though some of the words may be very obscure. 
-                    </p>
-                    <h4>Where did you find these words?</h4>
-                    <p>{Need a link to where I got the word list.}</p>
-                    <h4>How does this work?</h4>
-                    <p>The alorithm to build word squares identifies empty spaces
-                        and searches the english language for all words matching the
-                        pattern created by each word's intersection with the others.
-                    </p>
-                    <p>A <a href="https://en.wikipedia.org/wiki/Ternary_search_tree">ternary search tree</a> 
-                        is used to provide ultra-fast pattern matching results.  The search tree for this website can typically find all of the words matching
-                        a given pattern in less than 10 milliseconds! 
-                    </p>
-                </div>
-                <div class="col-sm-6" id="play-area">
-                    <h2 class="title">Word Square</h2>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <table id="game-table">
-                                <thead></thead>
-                                <tbody id="game-board">
-                                    <tr>
-                                        <td></td><td></td><td></td><td></td><td></td><td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td><td></td><td></td><td></td><td></td><td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td><td></td><td></td><td></td><td></td><td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td><td></td><td></td><td></td><td></td><td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td><td></td><td></td><td></td><td></td><td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td><td></td><td></td><td></td><td></td><td></td>
-                                    </tr>
-                                </tbody>
-                                <tfoot></tfoot>
-                            </table>
+        <div id="wrapper">
+            <!-- Sidebar / Info pane -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <!-- Populate with links (e.g. homepage) when we have some -->
+                    <!-- (Use <li><a href="">Link Text</a></li> structure) -->
+                </ul>
+                <div class="panel-group" id="accordion">
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                                    What is a word square?
+                                </a>
+                            </h4>
                         </div>
-                        <div class="col-sm-6">
-                            <div id="button-container">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <button id="search-button">Search</button>
+                        <div id="collapse1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>A word square is a block of words that reads the same, both across and down:
+    <pre>
+        TEST
+        ECHO
+        SHOW
+        TOWN
+    </pre>
+                                </p>
+                                <p>In a valid word square all words are the same length 
+                                    and the number of words equals the word length.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                    How do I play?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>Click an empty cell on the game board and start typing.</p>
+                                <p>Make sure that each word begins in the first column, but you may
+                                    leave empty rows.
+                                </p>
+                                <p>As you type, notice that your letters will appear in more than one cell.
+                                    The trick to making a word square is finding words that contain the same letters
+                                    where the words overlap.
+                                </p>
+                                <p>Stick with shorter words at first.  If you get stuck, press 'Search' and 
+                                    let the computer fill in the blanks.  You may be surprised how many valid 
+                                    solution can be found, though some of the words may be very obscure. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                                    What are these words?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse3" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                ((Need a link to the source of my word bank.))
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                                    How does this work?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse4" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>The algorithm to build word squares identifies empty spaces
+                                    and searches the english language for all words matching the
+                                    pattern created by each word's intersection with the others.
+                                </p>
+                                <p>A <a href="https://en.wikipedia.org/wiki/Ternary_search_tree">ternary search tree</a> 
+                                    is used to provide ultra-fast pattern matching results.  The search tree for this website can typically find all of the words matching
+                                    a given pattern in less than 10 milliseconds! 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- Main content -->
+            <div id="page-content-wrapper">
+                <div class="container">
+                    <button type="button" class="btn btn-default" id="menu-toggle">
+                        <span class="fas fa-bars"></span>
+                    </button>
+                    <div class="play-area">
+                        <h2 class="title">Word Square</h2>
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <table id="game-table">
+                                    <thead></thead>
+                                    <tbody id="game-board">
+                                        <tr>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td><td></td><td></td><td></td><td></td><td></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot></tfoot>
+                                </table>
+                            </div>
+                            <div class="col-sm-5">
+                                <div id="button-container">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <button id="search-button">Search</button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button id="clear-button">Clear</button>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <button id="clear-button">Clear</button>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <button id="previous-button">Last</button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button id="next-button">Next</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <button id="previous-button">Previous</button>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <button id="next-button">Next</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <input type="number" id="solution-index-input"/>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label id="solution-count"></label>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input type="number" id="solution-index-input"/>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label id="solution-count"></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <h4 class="title">Bonus Features</h4>
-                    <div class="row" id="extra-features">
-                        <div class="col-sm-6">
-                            <p>Prefix match:</p>
-                            <input type="text "id="prefix-match" />
-                            <ul id="prefix-match-results"></ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <p>Pattern match <br>(use '.' for wildcard):</p>
-                            <input type="text" id="pattern-match" />
-                            <ul id="pattern-match-results"></ul>
+                        <h4 class="title">Bonus Features</h4>
+                        <div class="row" id="extra-features">
+                            <div class="col-sm-6">
+                                <p>Prefix match:</p>
+                                <input type="text "id="prefix-match" />
+                                <ul id="prefix-match-results"></ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>Pattern match <br>(use '.' for wildcard):</p>
+                                <input type="text" id="pattern-match" />
+                                <ul id="pattern-match-results"></ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- Scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -131,5 +199,11 @@
         <script src="js/wsModel.js"></script>
         <script src="js/wsView.js"></script>
         <script src="js/wsController.js"></script>
+        <script>
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
     </body>
 </html>
