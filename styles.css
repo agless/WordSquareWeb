@@ -77,7 +77,7 @@ body {
 }
 
 #page-content-wrapper {
-    min-width: 500px;
+    min-width: 480px;
     max-width: 600px;
     margin: auto;
     padding: 15px;
