@@ -1,5 +1,6 @@
-#play-area {
+.play-area {
     border: 1px solid black;
+    padding: 15px;
 }
 
 td {
@@ -8,10 +9,9 @@ td {
     height: 50px;
 }
 
-button {
-    width: inherit;
-    font-size: 24px;
-    margin-bottom: 10px;
+.btn {
+    width: 45%;
+    padding: 0px;
 }
 
 .title {
@@ -34,52 +34,55 @@ button {
     width: 70px;
 }
 
-#menu-toggle {
+.menu-toggle {
     width: 40px;
 }
 
+#menu-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    margin-left: 50px;
+}
+
+.info-heading {
+    color: black;
+    white-space: nowrap;
+}
+
 body {
-overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 #wrapper {
-padding-left: 0;
--webkit-transition: all 0.5s ease;
--moz-transition: all 0.5s ease;
--o-transition: all 0.5s ease;
-transition: all 0.5s ease;
-}
-
-#wrapper.toggled {
-padding-left: 250px;
+    padding-left: 0;
+    transition: all 0.3s ease;
 }
 
 #sidebar-wrapper {
-z-index: 1000;
-position: absolute;
-left: 250px;
-width: 0;
-height: 100%;
-margin-left: -250px;
-overflow-y: auto;
--webkit-transition: all 0.5s ease;
--moz-transition: all 0.5s ease;
--o-transition: all 0.5s ease;
-transition: all 0.5s ease;
+    background: #bbbbbb;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.3s;
 }
 
 #wrapper.toggled #sidebar-wrapper {
-width: 250px;
+    width: 300px;
 }
 
 #page-content-wrapper {
-min-width: 500px;
-max-width: 600px;
-margin: auto;
-padding: 15px;
+    min-width: 500px;
+    max-width: 600px;
+    margin: auto;
+    padding: 15px;
 }
 
-#wrapper.toggled #page-content-wrapper {
-position: absolute;
-margin-right: -250px;
+.panel-default {
+    border: black;
 }

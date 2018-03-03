@@ -14,6 +14,9 @@
         <div id="wrapper">
             <!-- Sidebar / Info pane -->
             <div id="sidebar-wrapper">
+                <button type="button" class="btn btn-default menu-toggle" id="menu-close">
+                    <span class="fas fa-arrow-left"></span>
+                </button>
                 <ul class="sidebar-nav">
                     <!-- Populate with links (e.g. homepage) when we have some -->
                     <!-- (Use <li><a href="">Link Text</a></li> structure) -->
@@ -23,7 +26,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                                <a class="info-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
                                     What is a word square?
                                 </a>
                             </h4>
@@ -47,7 +50,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                <a class="info-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
                                     How do I play?
                                 </a>
                             </h4>
@@ -73,7 +76,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                                <a class="info-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
                                     What are these words?
                                 </a>
                             </h4>
@@ -88,7 +91,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                                <a class="info-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse4">
                                     How does this work?
                                 </a>
                             </h4>
@@ -113,14 +116,14 @@
             <!-- Main content -->
             <div id="page-content-wrapper">
                 <div class="container">
-                    <button type="button" class="btn btn-default" id="menu-toggle">
+                    <button type="button" class="btn btn-default menu-toggle">
                         <span class="fas fa-bars"></span>
                     </button>
                     <div class="play-area">
                         <h2 class="title">Word Square</h2>
                         <div class="row">
                             <div class="col-sm-7">
-                                <table id="game-table">
+                                <table id="game-table" class="centered">
                                     <thead></thead>
                                     <tbody id="game-board">
                                         <tr>
@@ -147,22 +150,18 @@
                             </div>
                             <div class="col-sm-5">
                                 <div id="button-container">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <button id="search-button">Search</button>
+                                    <span>
+                                        <div class="button-group" role="group">
+                                            <button type="button" class="btn btn-secondary" id="search-button">Search</button>
+                                            <button type="button" class="btn btn-secondary" id="clear-button">Clear</button>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <button id="clear-button">Clear</button>
+                                    </span>
+                                    <span>
+                                        <div class="button-group" role="group">
+                                            <button type="button" class="btn btn-secondary" id="previous-button">Last</button>
+                                            <button type="button" class="btn btn-secondary" id="next-button">Next</button>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <button id="previous-button">Last</button>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <button id="next-button">Next</button>
-                                        </div>
-                                    </div>
+                                    </span>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <input type="number" id="solution-index-input"/>
@@ -174,18 +173,18 @@
                                 </div>
                             </div>
                         </div>
-                        <h4 class="title">Bonus Features</h4>
-                        <div class="row" id="extra-features">
-                            <div class="col-sm-6">
-                                <p>Prefix match:</p>
-                                <input type="text "id="prefix-match" />
-                                <ul id="prefix-match-results"></ul>
-                            </div>
-                            <div class="col-sm-6">
-                                <p>Pattern match <br>(use '.' for wildcard):</p>
-                                <input type="text" id="pattern-match" />
-                                <ul id="pattern-match-results"></ul>
-                            </div>
+                    </div>
+                    <h4 class="title">Bonus Features</h4>
+                    <div class="row" id="extra-features">
+                        <div class="col-sm-6">
+                            <p>Prefix match:</p>
+                            <input type="text "id="prefix-match" />
+                            <ul id="prefix-match-results"></ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <p>Pattern match <br>(use '.' for wildcard):</p>
+                            <input type="text" id="pattern-match" />
+                            <ul id="pattern-match-results"></ul>
                         </div>
                     </div>
                 </div>
@@ -200,7 +199,7 @@
         <script src="js/wsView.js"></script>
         <script src="js/wsController.js"></script>
         <script>
-            $("#menu-toggle").click(function(e) {
+            $(".menu-toggle").click(function(e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("toggled");
             });
