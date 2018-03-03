@@ -17,7 +17,7 @@ var view = {
                 if ((squareWords[r] != undefined) && (c < squareWords[r].length)) {
                     this._renderChar(r, c, squareWords[r].charAt(c));
                 } else {
-                    this._renderChar(r, c, '');
+                    this._renderChar(r, c, ' ');
                 }
             }
         }
@@ -88,6 +88,7 @@ var view = {
             event.preventDefault();
             let row = $(event.target).parent().parent().children().index($(event.target).parent());
             let column = $(event.target).parent().children().index($(event.target));
+            $("#dummy-text-input").focus();
             controller.gameBoardClick(row, column);
         });
         
@@ -131,7 +132,8 @@ var view = {
 
         $('#prefix-match').on('input', function(event) {
             // Request prefix matches on User input
-            controller.getPrefixMatches(this.value);
+            let str = this.value.toLowerCase();
+            controller.getPrefixMatches(str);
         });
 
         /***********************
