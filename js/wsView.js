@@ -74,8 +74,8 @@ var view = {
          * so most characters are added in two cells.
          */
         character = character.toUpperCase();
-        $(this.gameBoard[row][column]).text(character);
-        $(this.gameBoard[column][row]).text(character);
+        $(this.gameBoard[row][column]).val(character);
+        $(this.gameBoard[column][row]).val(character);
     },
 
     /*************************************
@@ -88,11 +88,6 @@ var view = {
             event.preventDefault();
             let row = $(event.target).parent().parent().children().index($(event.target).parent());
             let column = $(event.target).parent().children().index($(event.target));
-
-            $('#dummy-text-input').focus(function(event) {
-                event.preventDefault();
-            });
-
             controller.gameBoardClick(row, column);
         });
         
@@ -139,6 +134,8 @@ var view = {
             let str = this.value.toLowerCase();
             controller.getPrefixMatches(str);
         });
+
+        $('.game-board-input')
 
         /***********************
          * Set up game board

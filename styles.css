@@ -3,10 +3,10 @@
     padding: 15px;
 }
 
-td {
-    border: 1px solid gray;
+.game-board-input {
     width: 16.66%;
     height: 16.66%;
+    text-align: center;
 }
 
 .btn {
@@ -23,8 +23,7 @@ td {
     margin: 0 auto;
 }
 
-#game-table {
-    border: 1px solid black;
+#game-board {
     font-family: monospace;
     font-size: 200%;
     text-align: center;
@@ -81,8 +80,6 @@ body {
 }
 
 #page-content-wrapper {
-    /*min-width: 480px;
-    max-width: 600px;*/
     width: 480px;
     margin: auto;
     padding: 15px;
@@ -90,9 +87,4 @@ body {
 
 .panel-default {
     border: black;
-}
-
-#dummy-text-input {
-    position: fixed;
-    left: 150%;
 }
