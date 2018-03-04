@@ -203,14 +203,22 @@
                     <h4 class="title">Bonus Features</h4>
                     <div class="row" id="extra-features">
                         <div class="col-sm-6">
-                            <p>Prefix match:</p>
+                            <label for="prefix-match">Prefix match:</label>
                             <input type="text" id="prefix-match" />
-                            <ul id="prefix-match-results"></ul>
+                            <p id="prefix-match-count">0 Results</p>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="prefix-match-dropdown" data-toggle="dropdown" aria-expanded="false">Show</button>
+                                <div class="dropdown-menu scrollable-menu" id="prefix-match-results" aria-labelledby="prefix-match-dropdown"></div>
+                            </div>
                         </div>
                         <div class="col-sm-6">
-                            <p>Pattern match <br>(use '.' for wildcard):</p>
+                            <label for="pattern-match">Pattern match ('.' = wild):</label>
                             <input type="text" id="pattern-match" />
-                            <ul id="pattern-match-results"></ul>
+                            <p id="pattern-match-count">0 Results</p>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="pattern-match-dropdown" data-toggle="dropdown" aria-expanded="false">Show</button>
+                                <div class="dropdown-menu scrollable-menu" id="pattern-match-results" aria-labelledby="pattern-match-dropdown"></div>
+                            </div>
                         </div>
                     </div>
                 </div>

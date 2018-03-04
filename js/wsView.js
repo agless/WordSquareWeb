@@ -31,13 +31,18 @@ var view = {
         $('#solution-count').text('of ' + count);
     },
 
-    renderPatternMatchResults: function (results) {
-        //
+    renderPrefixMatchResults: function (results) {
+        let insertString = '<a class="dropdown-item" href="#">' + 
+            results.join('</a><a class="dropdown-item" href="#">') + 
+            '</a>';
+        $('#prefix-match-results').empty().append(insertString);
     },
 
-    renderPrefixMatchResults: function (results) {
-        let listInsert = '<li>' + results.join('</li><li>') + '</li>';
-        $('#prefix-match-results').empty().append(listInsert);
+    renderPatternMatchResults: function (results) {
+        let insertString = '<a class="dropdown-item" href="#">' + 
+            results.join('</a><a class="dropdown-item" href="#">') + 
+            '</a>';
+        $('#pattern-match-results').empty().append(insertString);
     },
 
     renderEditing: function (row, cursor) {
@@ -144,9 +149,42 @@ var view = {
         
         $('#prefix-match').on('input', function(event) {
             controller.setEditing(false);
-            // Request prefix matches on User input
+            // Request prefix match count on User input
             let str = this.value.toLowerCase();
+            let count = controller.getPrefixMatchCount(str);
+            let message;
+            if (count == 1) message = '1 Result';
+            else message = count + ' Results';
+            $('#prefix-match-count').text(message);
+        });
+
+        $('#prefix-match-dropdown').on('click', function() {
+            // Request and build the result list only
+            // when User clicks to see the results.
+            let str = $('#prefix-match').val();
             controller.getPrefixMatches(str);
+        });
+
+        $('#pattern-match').on('click', function() {
+            controller.setEditing(false);
+        });
+        
+        $('#pattern-match').on('input', function(event) {
+            controller.setEditing(false);
+            // Request pattern match count on User input
+            let str = this.value.toLowerCase();
+            let count = controller.getPatternMatchCount(str);
+            let message;
+            if (count == 1) message = '1 Result';
+            else message = count + ' Results';
+            $('#pattern-match-count').text(message);
+        });
+
+        $('#pattern-match-dropdown').on('click', function() {
+            // Request and build the result list only
+            // when User clicks to see the results.
+            let str = $('#pattern-match').val();
+            controller.getPatternMatches(str);
         });
 
         $('.game-board-input').on('input', function(event) {

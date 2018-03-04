@@ -222,11 +222,22 @@ var controller = {
 
     getPrefixMatches: function (prefix) {
         let matches = this.searchTree.matchPrefix(prefix);
-        let message = matches.length;
-        (message == 1) ? message += ' match.' : message += ' matches.';
-        matches.splice(0, 0, message);
-        if (matches.length < 1000) view.renderPrefixMatchResults(matches);
-        else view.renderPrefixMatchResults([matches.slice(0, 1), 'Click to show.']);
+        view.renderPrefixMatchResults(matches);
+    },
+
+    getPrefixMatchCount: function (prefix) {
+        let matches = this.searchTree.matchPrefix(prefix);
+        return matches.length;
+    },
+
+    getPatternMatches: function (pattern) {
+        let matches = this.searchTree.matchPattern(pattern);
+        view.renderPatternMatchResults(matches);
+    },
+
+    getPatternMatchCount: function (pattern) {
+        let matches = this.searchTree.matchPattern(pattern);
+        return matches.length;
     },
 
     /*******************
