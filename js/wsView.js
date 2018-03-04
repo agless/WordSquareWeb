@@ -88,9 +88,10 @@ var view = {
             event.preventDefault();
             let row = $(event.target).parent().parent().children().index($(event.target).parent());
             let column = $(event.target).parent().children().index($(event.target));
-            
-            $('#dummy-text-input').focus();
-            $('#dummy-text-input').blur();
+
+            $('#dummy-text-input').focus(function(event) {
+                event.preventDefault();
+            });
 
             controller.gameBoardClick(row, column);
         });
