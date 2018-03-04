@@ -27,11 +27,23 @@ var controller = {
         view.renderEditing(this.r, this.c);
     },
     
+    setEditing: function (bool) {
+        if (bool === true) {
+            this.editing = true;
+            view.renderEditing(this.r, this.c);
+        }
+        if (bool === false) {
+            this.editing = false;
+            view.removeEditing();
+        }
+    },
+    
     gameBoardClick: function (row, column) {
         /**
          * Called by view when User clicks the game board
          */
-        if (!this.editing) return;
+        if (this.solutionCount > 0) return;
+        this.editing = true;
         this.r = row;
         this.c = column;
         this._showPartialSquare();
@@ -114,6 +126,7 @@ var controller = {
             }
         }
         this._showPartialSquare();
+        view.changeFocus(this.r, this.c);
     },
 
     clear: function () {
@@ -128,6 +141,7 @@ var controller = {
         view.renderSolutionCount(this.solutionCount);
         view.renderSolutionIndex(this.currentSolution);
         view.renderEditing(this.r, this.c);
+        view.changeFocus(this.r, this.c);
     },
     
     getSolution: function (index) {

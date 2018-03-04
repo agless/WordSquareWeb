@@ -17,7 +17,7 @@ var view = {
                 if ((squareWords[r] != undefined) && (c < squareWords[r].length)) {
                     this._renderChar(r, c, squareWords[r].charAt(c));
                 } else {
-                    this._renderChar(r, c, ' ');
+                    this._renderChar(r, c, '');
                 }
             }
         }
@@ -58,6 +58,10 @@ var view = {
                 this._cellColor(r, c, '#ffffff');
             }
         }
+    },
+
+    changeFocus: function(row, column) {
+        $(this.gameBoard[row][column]).focus();
     },
     
     /*********************
@@ -121,21 +125,35 @@ var view = {
         });
 
         $(document).keydown(function(event) {
-            // Send key presses to controller
-            if (event.key != 'F12') {
-                // Don't interrupt attempts to open the console.
-                // event.preventDefault();
-                controller.keyPress(event.key);
+            switch (event.key) {
+                case 'Enter':
+                case 'Tab':
+                case 'ArrowDown':
+                case 'ArrowUp':
+                case 'ArrowLeft':
+                case 'ArrowRight':
+                case 'Delete':
+                case 'Backspace':
+                    controller.keyPress(event.key);
             }
         });
 
+        $('#prefix-match').on('click', function() {
+            controller.setEditing(false);
+        });
+        
         $('#prefix-match').on('input', function(event) {
+            controller.setEditing(false);
             // Request prefix matches on User input
             let str = this.value.toLowerCase();
             controller.getPrefixMatches(str);
         });
 
-        $('.game-board-input')
+        $('.game-board-input').on('input', function(event) {
+            let str = this.value.toLowerCase();
+            str = str.trim();
+            controller.keyPress(str[0]);
+        });
 
         /***********************
          * Set up game board
@@ -144,5 +162,6 @@ var view = {
         for (let i = 0; i < 6; i++) {
             this.gameBoard[i] = $(rows[i]).children();
         }
+        $(this.gameBoard[0][0]).focus();
     },
 };
