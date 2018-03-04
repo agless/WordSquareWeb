@@ -88,7 +88,11 @@ var view = {
             event.preventDefault();
             let row = $(event.target).parent().parent().children().index($(event.target).parent());
             let column = $(event.target).parent().children().index($(event.target));
-            $("#dummy-text-input").focus().focus();
+            
+            // Not working.  Need to trigger keyboard and then
+            // capture key presses on mobile.
+            $('#dummy-text-input').focus();
+            $('#dummy-text-input').blur();
             controller.gameBoardClick(row, column);
         });
         
