@@ -17,28 +17,30 @@
                 <button type="button" class="btn btn-default menu-toggle" id="menu-close">
                     <span class="fas fa-arrow-left"></span>
                 </button>
+                
                 <ul class="sidebar-nav">
                     <!-- Populate with links (e.g. homepage) when we have some -->
                     <!-- (Use <li><a href="">Link Text</a></li> structure) -->
                 </ul>
-                <div class="panel-group" id="accordion">
+                
+                <div id="accordion">
                     
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="info-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                    <div class="card">
+                        <div class="card-header" id="heading1">
+                            <h4>
+                                <a class="info-heading" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
                                     What is a word square?
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapse1" class="panel-collapse collapse">
-                            <div class="panel-body">
+                        <div id="collapse1" class="collapse info-heading" aria-labelledby="heading1" data-parent="#accordion">
+                            <div class="card-body">
                                 <p>A word square is a block of words that reads the same, both across and down:
     <pre>
-        TEST
-        ECHO
-        SHOW
-        TOWN
+    TEST
+    ECHO
+    SHOW
+    TOWN
     </pre>
                                 </p>
                                 <p>In a valid word square all words are the same length 
@@ -46,17 +48,17 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="info-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+
+                    <div class="card">
+                        <div class="card-header" id="heading2">
+                            <h4>
+                                <a class="info-heading" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
                                     How do I play?
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapse2" class="panel-collapse collapse">
-                            <div class="panel-body">
+                        <div id="collapse2" class="collapse info-heading" aria-labelledby="heading2" data-parent="#accordion">
+                            <div class="card-body">
                                 <p>Click an empty cell on the game board and start typing.</p>
                                 <p>Make sure that each word begins in the first column, but you may
                                     leave empty rows.
@@ -72,32 +74,34 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="info-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+
+                    <div class="card">
+                        <div class="card-header" id="heading3">
+                            <h4>
+                                <a class="info-heading" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
                                     What are these words?
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapse3" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                ((Need a link to the source of my word bank.))
+                        <div id="collapse3" class="collapse info-heading" aria-labelledby="heading3" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>
+                                    ((need a link to the source of my word bank.))
+                                </p>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a class="info-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+
+                    <div class="card">
+                        <div class="card-header" id="heading4">
+                            <h4>
+                                <a class="info-heading" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
                                     How does this work?
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapse4" class="panel-collapse collapse">
-                            <div class="panel-body">
+                        <div id="collapse4" class="collapse info-heading" aria-labelledby="heading4" data-parent="#accordion">
+                            <div class="card-body">
                                 <p>The algorithm to build word squares identifies empty spaces
                                     and searches the english language for all words matching the
                                     pattern created by each word's intersection with the others.

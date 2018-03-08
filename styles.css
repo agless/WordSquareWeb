@@ -59,6 +59,10 @@
     white-space: nowrap;
 }
 
+.card-body {
+    white-space: normal;
+}
+
 body {
     overflow-x: hidden;
 }
@@ -89,8 +93,4 @@ body {
     width: 480px;
     margin: auto;
     padding: 15px;
-}
-
-.panel-default {
-    border: black;
 }
