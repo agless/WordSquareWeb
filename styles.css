@@ -1,7 +1,8 @@
 .play-area {
-    border: 1px solid black;
+    border: 1px solid #022b3a;
     border-radius: 20px;
     padding: 15px;
+    background-color: #022b3a;
 }
 
 .game-board-input {
@@ -19,6 +20,7 @@
 
 .title {
     text-align: center;
+    color: #bfdbf7;
 }
 
 .centered {
@@ -34,6 +36,10 @@
     max-width: 250px;
     height: 250px;
     
+}
+
+input {
+    background-color: #e1e5f2;
 }
 
 .scrollable-menu {
@@ -61,16 +67,33 @@
 }
 
 .info-heading {
-    color: black;
+    color: #bfdbf7;
     white-space: nowrap;
+}
+
+.info-heading:hover {
+    color: #bfdbf7;
+}
+
+.card-header {
+    background-color: #1f7a8c;
 }
 
 .card-body {
     white-space: normal;
+    background-color: #022b3a;
+    color: #bfdbf7;
+}
+
+pre {
+    color: #bfdbf7;
+    letter-spacing: 2px;
 }
 
 body {
     overflow-x: hidden;
+    background-color: #1f7a8c;
+    color: #bfdbf7;
 }
 
 #wrapper {
@@ -79,7 +102,7 @@ body {
 }
 
 #sidebar-wrapper {
-    background: #bbbbbb;
+    background: #022b3a;
     height: 100%;
     width: 0;
     position: fixed;

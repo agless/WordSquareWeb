@@ -49,9 +49,9 @@ var view = {
         for (let r = 0; r < 6; r++) {
             for (let c = 0; c < 6; c++) {
                 let color;
-                if (((r == row) && (c == cursor)) || ((r == cursor) && (c == row))) color = '#64affa';
-                else if ((r == row) || (c == row)) color = '#96c8fa';
-                else color = '#ffffff';
+                if (((r == row) && (c == cursor)) || ((r == cursor) && (c == row))) color = '#1f7a8c';
+                else if ((r == row) || (c == row)) color = '#bfdbf7';
+                else color = '#e1e5f2';
                 this._cellColor(r, c, color);
             }
         }
@@ -60,7 +60,7 @@ var view = {
     removeEditing: function() {
         for (let r = 0; r < 6; r++) {
             for (let c = 0; c < 6; c++) {
-                this._cellColor(r, c, '#ffffff');
+                this._cellColor(r, c, '#e1e5f2');
             }
         }
     },
