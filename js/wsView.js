@@ -143,6 +143,12 @@ var view = {
             }
         });
 
+        $('.game-board-input').on('input', function(event) {
+            let str = this.value.toLowerCase();
+            str = str.trim();
+            controller.keyPress(str[0]);
+        });
+
         $('#prefix-match').on('click', function() {
             controller.setEditing(false);
         });
@@ -185,12 +191,6 @@ var view = {
             // when User clicks to see the results.
             let str = $('#pattern-match').val();
             controller.getPatternMatches(str);
-        });
-
-        $('.game-board-input').on('input', function(event) {
-            let str = this.value.toLowerCase();
-            str = str.trim();
-            controller.keyPress(str[0]);
         });
 
         /***********************
