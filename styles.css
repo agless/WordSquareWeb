@@ -1,8 +1,8 @@
 .play-area {
     border: 1px solid #022b3a;
     border-radius: 20px;
-    padding: 15px;
     background-color: #022b3a;
+    padding: 15px;
 }
 
 .game-board-input {
@@ -34,7 +34,6 @@
     text-align: center;
     width: 100%;
     max-width: 250px;
-    height: 250px;
     
 }
 
@@ -121,5 +120,5 @@ body {
 #page-content-wrapper {
     width: 480px;
     margin: auto;
-    padding: 15px;
+    padding: 5px;
 }
