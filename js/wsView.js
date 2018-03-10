@@ -15,7 +15,9 @@ var view = {
         for (let r = 0; r < 6; r++) {
             for (let c = 0; c < 6; c++) {
                 if ((squareWords[r] != undefined) && (c < squareWords[r].length)) {
-                    this._renderChar(r, c, squareWords[r].charAt(c));
+                    let char = squareWords[r].charAt(c);
+                    if (char == ' ') char = '';
+                    this._renderChar(r, c, char);
                 } else {
                     this._renderChar(r, c, '');
                 }
@@ -94,6 +96,7 @@ var view = {
     init: function () {
         // Set up listeners
         $('#game-board').click(function(event) {
+            // Determine which input cell has been clicked and report it to the controller
             event.preventDefault();
             let row = $(event.target).parent().parent().children().index($(event.target).parent());
             let column = $(event.target).parent().children().index($(event.target));
@@ -130,6 +133,7 @@ var view = {
         });
 
         $(document).keydown(function(event) {
+            // Send all navigation / editing key presses to the controller
             switch (event.key) {
                 case 'Enter':
                 case 'Tab':
@@ -144,12 +148,17 @@ var view = {
         });
 
         $('.game-board-input').on('input', function(event) {
+            // Catch all gameboard input changes and send to the controller
             let str = this.value.toLowerCase();
+            // Remove whitespace, if any
             str = str.trim();
+            // Only accept the first character for 'swype' inputs
             controller.keyPress(str[0]);
         });
 
         $('#prefix-match').on('click', function() {
+            // User is interacting with a bonus feature, so
+            // prevent controller from sending keypresses to the gameboard
             controller.setEditing(false);
         });
         
@@ -172,6 +181,8 @@ var view = {
         });
 
         $('#pattern-match').on('click', function() {
+            // User is interacting with a bonus feature, so
+            // prevent controller from sending keypresses to the gameboard
             controller.setEditing(false);
         });
         

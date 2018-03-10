@@ -29,12 +29,11 @@
 }
 
 #game-board {
-    font-family: monospace;
+    font-family: monospace, sans-serif;
     font-size: 200%;
     text-align: center;
     width: 100%;
     max-width: 250px;
-    
 }
 
 input {
