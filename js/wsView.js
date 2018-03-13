@@ -148,17 +148,19 @@ var view = {
                     controller.keyPress(event.key);
                     return;
             }
-
-            if (((event.key >= 'a') && (event.key <= 'z')) ||
-                    ((event.key >= 'A') && (event.key <= 'Z'))) {
-                event.preventDefault();
-                controller.keyPress(event.key.toLowerCase());
-            }
         });
 
         $('.game-board-input').on('input', function(event) {
             // Handle 'swype' input
             if (!controller.getEditing()) return;
+            if (((event.key >= 'a') && (event.key <= 'z')) ||
+                    ((event.key >= 'A') && (event.key <= 'Z'))) {
+                event.preventDefault();
+                controller.keyPress(event.key.toLowerCase());
+            } else if (event.key == 'Tab') {
+                event.preventDefault();
+                controller.keyPress(event.key);
+            }
             else {
                 let str = this.value.toLowerCase();
                 // Remove whitespace, if any
