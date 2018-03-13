@@ -55,7 +55,7 @@ var controller = {
     },
 
     gameBoardInput: function (str) {
-        if ((str != undefined) && (str.length != 1)) {
+        if (str.length > 1) {
             let current = this.gameBoard[this.r][this.c];
             let i = 0;
             // Look for a character that wasn't here already
@@ -87,14 +87,7 @@ var controller = {
             return;
         }
         else {
-            // let key = $(event).key();
-            /*if ((key >= 'a') && (key <= 'z')) {
-                this.gameBoard[this.r][this.c] = key;
-                this.gameBoard[this.c][this.r] = key;
-                this._goToNextEditable();
-            }
-            
-            else*/ if ((key == 'Enter') || key == ('Tab')) {
+            if ((key == 'Enter') || key == ('Tab')) {
                 if (this.r < 5) {
                     this.r++;
                     this.c = 0;

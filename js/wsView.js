@@ -155,8 +155,7 @@ var view = {
             // Handle input if in editing state
             if (!controller.getEditing()) return;
             let str = $(this).val();
-            str = str.toLowerCase();
-            if (str == 'undefined') str = '';
+            if (str != undefined) str = str.toLowerCase();
             // Remove whitespace, if any
             str = str.trim();
             // Let controller determine which character to keep
