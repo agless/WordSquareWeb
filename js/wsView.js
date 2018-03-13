@@ -145,30 +145,20 @@ var view = {
                 case 'ArrowRight':
                 case 'Delete':
                 case 'Backspace':
+                    event.preventDefault();
                     controller.keyPress(event.key);
                     return;
             }
         });
-
-        $('.game-board-input').on('keydown', function(event) {
-            // Send keyboard input if in editing state
-            if (!controller.getEditing()) return;
-            if (((event.which >= 'a') && (event.which <= 'z')) ||
-                    ((event.which >= 'A') && (event.which <= 'Z'))) {
-                event.preventDefault();
-                this.val('');
-                controller.keyPress(event.which.toLowerCase());
-            }
-        });
         
         $('.game-board-input').on('input', function(event) {
-            // Handle 'swype' input if in editing state
+            // Handle input if in editing state
             if (!controller.getEditing()) return;
             let str = this.value.toLowerCase();
             // Remove whitespace, if any
             str = str.trim();
-            // Only accept the first character for 'swype' inputs
-            controller.keyPress(str[0]);
+            // Let controller determine which character to keep
+            controller.gameBoardInput(str);
         });
 
         $('#prefix-match').on('click', function() {

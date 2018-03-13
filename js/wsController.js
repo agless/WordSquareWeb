@@ -54,6 +54,21 @@ var controller = {
         this._showPartialSquare();
     },
 
+    gameBoardInput: function (str) {
+        if (str.length != 1) {
+            let current = this.gameBoard[this.r][this.c];
+            let i = 0;
+            // Look for a character that wasn't here already
+            while ((str[i] == current) && (i < str.length - 1)) i++;
+            str = str[i];
+        }
+        this.gameBoard[this.r][this.c] = str;
+        this.gameBoard[this.c][this.r] = str;        
+        this._goToNextEditable();
+        this._showPartialSquare();
+        view.changeFocus(this.r, this.c);
+    },
+    
     keyPress: function (key) {
         /**
          * Called by view to handle keyboard input.
@@ -73,13 +88,13 @@ var controller = {
         }
         else {
             // let key = $(event).key();
-            if ((key >= 'a') && (key <= 'z')) {
+            /*if ((key >= 'a') && (key <= 'z')) {
                 this.gameBoard[this.r][this.c] = key;
                 this.gameBoard[this.c][this.r] = key;
                 this._goToNextEditable();
             }
             
-            else if ((key == 'Enter') || key == ('Tab')) {
+            else*/ if ((key == 'Enter') || key == ('Tab')) {
                 if (this.r < 5) {
                     this.r++;
                     this.c = 0;
