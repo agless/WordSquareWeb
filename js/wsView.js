@@ -150,24 +150,25 @@ var view = {
             }
         });
 
-        $('.game-board-input').on('input', function(event) {
-            // Handle 'swype' input
+        $('.game-board-input').on('keydown', function(event) {
+            // Send keyboard input if in editing state
             if (!controller.getEditing()) return;
-            if (((event.key >= 'a') && (event.key <= 'z')) ||
-                    ((event.key >= 'A') && (event.key <= 'Z'))) {
+            if (((event.which >= 'a') && (event.which <= 'z')) ||
+                    ((event.which >= 'A') && (event.which <= 'Z'))) {
                 event.preventDefault();
-                controller.keyPress(event.key.toLowerCase());
-            } else if (event.key == 'Tab') {
-                event.preventDefault();
-                controller.keyPress(event.key);
+                this.val('');
+                controller.keyPress(event.which.toLowerCase());
             }
-            else {
-                let str = this.value.toLowerCase();
-                // Remove whitespace, if any
-                str = str.trim();
-                // Only accept the first character for 'swype' inputs
-                controller.keyPress(str[0]);
-            }
+        });
+        
+        $('.game-board-input').on('input', function(event) {
+            // Handle 'swype' input if in editing state
+            if (!controller.getEditing()) return;
+            let str = this.value.toLowerCase();
+            // Remove whitespace, if any
+            str = str.trim();
+            // Only accept the first character for 'swype' inputs
+            controller.keyPress(str[0]);
         });
 
         $('#prefix-match').on('click', function() {
