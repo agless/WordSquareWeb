@@ -55,7 +55,7 @@ var controller = {
     },
 
     gameBoardInput: function (str) {
-        if (str.length != 1) {
+        if ((str != undefined) && (str.length != 1)) {
             let current = this.gameBoard[this.r][this.c];
             let i = 0;
             // Look for a character that wasn't here already
