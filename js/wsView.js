@@ -154,7 +154,7 @@ var view = {
         $('.game-board-input').on('input', function(event) {
             // Handle input if in editing state
             if (!controller.getEditing()) return;
-            let str = this.value.toLowerCase();
+            let str = $(this).val().toLowerCase();
             // Remove whitespace, if any
             str = str.trim();
             // Let controller determine which character to keep
