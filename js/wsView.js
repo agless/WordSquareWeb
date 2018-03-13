@@ -134,6 +134,8 @@ var view = {
 
         $(document).keydown(function(event) {
             // Send all navigation / editing key presses to the controller
+            // if in editng state
+            if (!controller.getEditing()) return;
             switch (event.key) {
                 case 'Enter':
                 case 'Tab':
@@ -144,16 +146,26 @@ var view = {
                 case 'Delete':
                 case 'Backspace':
                     controller.keyPress(event.key);
+                    return;
+            }
+
+            if (((event.key >= 'a') && (event.key <= 'z')) ||
+                    ((event.key >= 'A') && (event.key <= 'Z'))) {
+                event.preventDefault();
+                controller.keyPress(event.key.toLowerCase());
             }
         });
 
         $('.game-board-input').on('input', function(event) {
-            // Catch all gameboard input changes and send to the controller
-            let str = this.value.toLowerCase();
-            // Remove whitespace, if any
-            str = str.trim();
-            // Only accept the first character for 'swype' inputs
-            controller.keyPress(str[0]);
+            // Handle 'swype' input
+            if (!controller.getEditing()) return;
+            else {
+                let str = this.value.toLowerCase();
+                // Remove whitespace, if any
+                str = str.trim();
+                // Only accept the first character for 'swype' inputs
+                controller.keyPress(str[0]);
+            }
         });
 
         $('#prefix-match').on('click', function() {

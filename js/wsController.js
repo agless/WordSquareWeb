@@ -37,6 +37,11 @@ var controller = {
             view.removeEditing();
         }
     },
+
+    getEditing: function () {
+        if (this.editing) return true;
+        else return false;
+    },
     
     gameBoardClick: function (row, column) {
         /**
@@ -67,6 +72,7 @@ var controller = {
             return;
         }
         else {
+            // let key = $(event).key();
             if ((key >= 'a') && (key <= 'z')) {
                 this.gameBoard[this.r][this.c] = key;
                 this.gameBoard[this.c][this.r] = key;
