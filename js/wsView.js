@@ -145,7 +145,7 @@ var view = {
                 case 'ArrowRight':
                 case 'Delete':
                 case 'Backspace':
-                    event.preventDefault();
+                    // event.preventDefault();
                     controller.keyPress(event.key);
                     return;
             }
