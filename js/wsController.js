@@ -73,7 +73,7 @@ var controller = {
         /**
          * Called by view to handle keyboard input.
          * Handles arrows, tabs, backspace, delete,
-         * enter, and character key input.
+         * enter.
          */ 
         if (!this.editing) {
             // Ignore key presses when not 'editing'.
