@@ -1,7 +1,7 @@
 /**
  * Provides a structure for storing key-value pairs.
  * Provides fast insert and lookup operations.
- * Provies fast pattern and prefix matching for keys.
+ * Provides fast pattern and prefix matching for keys.
  */
 
 function TernaryTree() {
@@ -205,7 +205,7 @@ TernaryTree.prototype._getFinalNode = function recurse (key, pos, nd) {
 TernaryTree.prototype._getBranchWords = function recurse (nd, strBuild, keySet) {
     /**
      * Traverses the branch headed by this Node using depth first search.
-     * Fills the 'wordSet' array with all valid words in this branch.
+     * Fills the 'keySet' array with all valid keys in this branch.
      * 
      * Returns 'void'.
      */
