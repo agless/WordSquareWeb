@@ -153,21 +153,21 @@ var model = {
 
     _scoreSolution: function(sol) {
         /**
-         * Sets Solution score as the worst non-zero word divided by the
-         * number of zero-score words.  Zipf's law makes sorting by average
-         * and total word score pointless.  Need to judge a solution
-         * by its worst words to really weed out the oddballs.
+         * Sets Solution score as the lowest individual word score.
+         * Zipf's law makes sorting by average and total word score 
+         * pointless.  Need to judge a solution by its worst word 
+         * to weed out the oddballs.  However, this will leave
+         * a lot of zero-score solutions, since there are a lot of
+         * obscure words in the word bank.  That's ok, since no one
+         * is likely to look at more than a few solutions for any
+         * given search.
         */
-        let lowScore = Number.MAX_SAFE_INTEGER;
-        let zeroCount = 0;
-        sol.solutionWords.forEach(function (word) {
-            let sc = model.searchTree.get(word);
-            if (sc == 0) zeroCount++;
-            else if (sc < lowScore) lowScore = sc;
-        });
-        if (lowScore == Number.MAX_SAFE_INTEGER) lowScore = 0;
-        if (zeroCount > 0) lowScore /= zeroCount;
-        sol.score = lowScore;
+       let lowScore = Number.MAX_SAFE_INTEGER;
+       sol.solutionWords.forEach(function (word) {
+           let test = model.searchTree.get(word);
+           if (test < lowScore) lowScore = test;
+       });
+       sol.score = lowScore;
     },
 
     _sortSolutions: function() {
