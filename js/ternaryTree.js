@@ -38,7 +38,9 @@ TernaryTree.prototype.insertKey = function(key) {
      * Returns 'true' on successful insert.
      * Returns 'false' if the key is already in the tree. 
      */
-    return this._insertKey(key, 0, this.head);
+    if (this.containsKey(key)) return false;
+    else this._insertKey(key, 0, this.head);
+    return true;
 }
 
 TernaryTree.prototype.containsKey = function(key) {
