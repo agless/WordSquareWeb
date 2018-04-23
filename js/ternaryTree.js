@@ -54,12 +54,12 @@ TernaryTree.prototype.remove = function(key) {
      * Returns 'false' if the key was not found.
      */
     let nd = this._getFinalNode(key, 0, this.head);
-    if (nd == undefined) return false;
-    else {
+    if (nd != undefined) {
         nd.data = undefined;
         nd.valid = false;
         return true;
     }
+    else return false;
 }
 
 TernaryTree.prototype.containsKey = function(key) {
