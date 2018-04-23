@@ -50,16 +50,18 @@ TernaryTree.prototype.remove = function(key) {
     /**
      * Removes a key from the tree.
      * 
-     * Returns 'true' on successful removal.
-     * Returns 'false' if the key was not found.
+     * Returns the value associated with the key
+     * on successful removal.
+     * Returns 'undefined' if the key was not found.
      */
     let nd = this._getFinalNode(key, 0, this.head);
     if (nd != undefined) {
+        let data = nd.data;
         nd.data = undefined;
         nd.valid = false;
-        return true;
+        return data;
     }
-    else return false;
+    else return undefined;
 }
 
 TernaryTree.prototype.containsKey = function(key) {
