@@ -165,6 +165,7 @@ var model = {
        let lowScore = Number.MAX_SAFE_INTEGER;
        sol.solutionWords.forEach(function (word) {
            let test = model.searchTree.get(word);
+           if (test == undefined) test = 0;
            if (test < lowScore) lowScore = test;
        });
        sol.score = lowScore;
