@@ -57,7 +57,7 @@ TernaryTree.prototype.remove = function(key) {
      * Returns 'undefined' if the key was not found.
      */
     let nd = this._getFinalNode(key, 0, this.head);
-    if (nd != undefined) {
+    if ((nd != undefined) && (nd.valid)) {
         let data = nd.data;
         nd.data = undefined;
         nd.valid = false;
