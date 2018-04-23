@@ -86,7 +86,7 @@ TernaryTree.prototype.get = function (key) {
      * Returns 'undefined' if the key is not in the tree.
      */
     let nd = this._getFinalNode(key, 0, this.head);
-    if (nd != undefined) return nd.data;
+    if ((nd != undefined) && (nd.valid)) return nd.data;
     else return undefined;
 }
 
