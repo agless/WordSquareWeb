@@ -20,15 +20,18 @@ function TernaryTree() {
 
 TernaryTree.prototype.insert = function (key, value) {
     /**
-     * Adds a new key-value pair to the tree or updates
-     * the value associated with an existing key.  
+     * Adds a new key-value pair to the tree.  
      * Key is treated as a string.
      * 
-     * Returns 'true' on successful insert or update.
+     * Returns 'true' on successful insert.
+     * Returns 'false' if the key is already in the tree.
      */
     let nd = this._insertKey(key, 0, this.head);
-    nd.data = value;
-    return true;
+    if (nd == undefined) return false;
+    else {
+        nd.data = value;
+        return true;
+    }
 }
 
 TernaryTree.prototype.insertKey = function(key) {
@@ -38,9 +41,25 @@ TernaryTree.prototype.insertKey = function(key) {
      * Returns 'true' on successful insert.
      * Returns 'false' if the key is already in the tree. 
      */
-    if (this.containsKey(key)) return false;
-    else this._insertKey(key, 0, this.head);
-    return true;
+    let nd = this._insertKey(key, 0, this.head);
+    if (nd == undefined) return false;
+    else return true;
+}
+
+TernaryTree.prototype.remove = function(key) {
+    /**
+     * Removes a key from the tree.
+     * 
+     * Returns 'true' on successful removal.
+     * Returns 'false' if the key was not found.
+     */
+    let nd = this._getFinalNode(key, 0, this.head);
+    if (nd == undefined) return false;
+    else {
+        nd.data = undefined;
+        nd.valid = false;
+        return true;
+    }
 }
 
 TernaryTree.prototype.containsKey = function(key) {
@@ -121,12 +140,14 @@ TernaryTree.prototype._insertKey = function recurse (key, pos, nd) {
      * Adds a key to the search tree by finding a path through
      * existing Nodes or creating new Nodes as needed.
      * 
-     * Returns the final Node for this key.
+     * Returns the final Node for this key on successful insert.
+     * Returns 'undefined' if the key is already in the tree.
      */
     let c = key.charAt(pos);
     if (c == nd.value) {
         if (pos == key.length - 1) {
-            nd.valid = true;
+            if (nd.valid == true) return undefined;
+            else nd.valid = true;
             return nd;
         } else {
             if (nd.equal != undefined) return recurse(key, ++pos, nd.equal);
@@ -232,7 +253,7 @@ function Node() {
 
     // The data to be associated with a key.
     // Data is stored in the final Node for the key. 
-    this.data = 0;
+    this.data = undefined;
     
     // Child Nodes to create a ternary structure.
     this.smaller = undefined,
