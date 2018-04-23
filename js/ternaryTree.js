@@ -25,6 +25,9 @@ TernaryTree.prototype.insert = function (key, value) {
      * 
      * Returns 'true' on successful insert.
      * Returns 'false' if the key is already in the tree.
+     * 
+     * (Would it be better to throw an error if the key
+     * is already in the tree?)
      */
     let nd = this._insertKey(key, 0, this.head);
     if (nd == undefined) return false;
@@ -50,8 +53,7 @@ TernaryTree.prototype.remove = function(key) {
     /**
      * Removes a key from the tree.
      * 
-     * Returns the value associated with the key
-     * on successful removal.
+     * Returns the value associated with the key.
      * Returns 'undefined' if the key was not found.
      */
     let nd = this._getFinalNode(key, 0, this.head);
@@ -99,7 +101,7 @@ TernaryTree.prototype.set = function (key, value) {
      * (Would it be better to throw an error if the key doesn't exist?)
      */
     let nd = this._getFinalNode(key, 0, this.head);
-    if (nd != undefined) {
+    if ((nd != undefined) && (nd.valid)) {
         nd.data = value;
         return true;
     } else return false;
