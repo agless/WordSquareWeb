@@ -192,7 +192,7 @@ TernaryTree.prototype._matchPattern = function recurse (pattern, pos, strBuild, 
      * Matches a pattern by finding a path through the search tree Nodes.
      * Interprets the '.' character as a wildcard.  When a wildcard is encountered,
      * the search path splits, treating each of the Nodes at this depth for this branch 
-     * as a match, and continues, depth first, down each respective sub-branch.
+     * as a match, and continues, in lexical order, down each respective sub-branch.
      * Fills the 'keySet' array with keys matching the pattern.
      * 
      * Returns 'void'.
@@ -200,10 +200,11 @@ TernaryTree.prototype._matchPattern = function recurse (pattern, pos, strBuild, 
     let c = pattern.charAt(pos);
     if (c == '.') {
         if (nd.smaller != undefined) recurse(pattern, pos, strBuild, nd.smaller, keySet);
-        if (nd.bigger != undefined) recurse(pattern, pos, strBuild, nd.bigger, keySet);
+        let oldStr = strBuild;
         strBuild += nd.value;
         if ((pos == pattern.length - 1) && (nd.valid)) keySet.push(strBuild);
-        else if (nd.equal != undefined) recurse(pattern, ++pos, strBuild, nd.equal, keySet);
+        else if (nd.equal != undefined) recurse(pattern, pos + 1, strBuild, nd.equal, keySet);
+        if (nd.bigger != undefined) recurse(pattern, pos, oldStr, nd.bigger, keySet);
     } 
     else if (c == nd.value) {
         strBuild += c;
