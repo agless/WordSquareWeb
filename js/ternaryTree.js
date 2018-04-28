@@ -134,6 +134,15 @@ TernaryTree.prototype.matchPrefix = function (prefix) {
     if (nd.equal != undefined) this._getBranchWords(nd.equal, prefix, keySet);
     return keySet;
 }
+
+TernaryTree.prototype.keys = function () {
+    /**
+     * Returns a sorted array of all keys.
+     */
+    let keySet = [];
+    this._getBranchWords(this.head, '', keySet);
+    return keySet;
+}
     
 /***********************
  * Helper Methods
@@ -231,17 +240,20 @@ TernaryTree.prototype._getFinalNode = function recurse (key, pos, nd) {
 
 TernaryTree.prototype._getBranchWords = function recurse (nd, strBuild, keySet) {
     /**
-     * Traverses the branch headed by this Node using depth first search.
+     * Traverses the branch headed by this Node in lexical order.
      * Fills the 'keySet' array with all valid keys in this branch.
      * 
      * Returns 'void'.
      */
     if (nd.smaller != undefined) recurse(nd.smaller, strBuild, keySet);
-    if (nd.bigger != undefined) recurse(nd.bigger, strBuild, keySet);
+    let oldStr = strBuild;
     strBuild += nd.value;
     if (nd.valid) keySet.push(strBuild);
     if (nd.equal != undefined) recurse(nd.equal, strBuild, keySet);
+    if (nd.bigger != undefined) recurse(nd.bigger, oldStr, keySet);
 }
+
+TernaryTree.prototype._
 
 /**
  * A simple object from which to build a ternary search tree.
