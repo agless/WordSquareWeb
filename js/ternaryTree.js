@@ -253,8 +253,6 @@ TernaryTree.prototype._getBranchWords = function recurse (nd, strBuild, keySet) 
     if (nd.bigger != undefined) recurse(nd.bigger, oldStr, keySet);
 }
 
-TernaryTree.prototype._
-
 /**
  * A simple object from which to build a ternary search tree.
  * Each Node represents a character in a valid string.
