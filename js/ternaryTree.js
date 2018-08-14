@@ -61,7 +61,7 @@ TernaryTree.prototype.remove = function(key) {
      */
     let nd = this._getFinalNode(key, 0, this.head);
     if ((nd != undefined) && (nd.valid)) {
-        let data 
+        let data; 
         if (nd.data != undefined) {
             data = nd.data;
         } else {
