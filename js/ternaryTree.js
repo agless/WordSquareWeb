@@ -25,9 +25,6 @@ TernaryTree.prototype.insert = function (key, value) {
      * 
      * Returns 'true' on successful insert.
      * Returns 'false' if the key is already in the tree.
-     * 
-     * (Would it be better to throw an error if the key
-     * is already in the tree?)
      */
     let nd = this._insertKey(key, 0, this.head);
     if (nd == undefined) return false;
@@ -37,7 +34,7 @@ TernaryTree.prototype.insert = function (key, value) {
     }
 }
 
-TernaryTree.prototype.insertKey = function(key) {
+TernaryTree.prototype.insertKey = function (key) {
     /**
      * Adds a key to the tree.
      * 
@@ -49,7 +46,7 @@ TernaryTree.prototype.insertKey = function(key) {
     else return true;
 }
 
-TernaryTree.prototype.remove = function(key) {
+TernaryTree.prototype.remove = function (key) {
     /**
      * Removes a key from the tree.
      * 
@@ -74,7 +71,7 @@ TernaryTree.prototype.remove = function(key) {
     else return undefined;
 }
 
-TernaryTree.prototype.containsKey = function(key) {
+TernaryTree.prototype.containsKey = function (key) {
     /**
      * Verifies whether the search tree contains this key.
      * 
@@ -105,8 +102,6 @@ TernaryTree.prototype.set = function (key, value) {
      * 
      * Returns 'true' if the key exists in the tree.
      * Returns 'false' if the key does not exist in the tree.
-     * 
-     * (Would it be better to throw an error if the key doesn't exist?)
      */
     let nd = this._getFinalNode(key, 0, this.head);
     if ((nd != undefined) && (nd.valid)) {
@@ -120,8 +115,8 @@ TernaryTree.prototype.matchPattern = function (pattern) {
      * Matches a pattern like "t..t".
      * Treats the '.' character as a wildcard.
      * 
-     * Returns an array of keys matching the pattern:
-     * e.g. ["test", "toot", "tart", "tent", etc.].
+     * Returns a sorted array of keys matching the pattern:
+     * e.g. ["tart", "tent", "test", "toot", etc.].
      */
     let keySet = [];
     this._matchPattern(pattern, 0, '', this.head, keySet);
@@ -132,8 +127,8 @@ TernaryTree.prototype.matchPrefix = function (prefix) {
     /**
      * Matches a prefix like "te".
      *  
-     * Returns an array of keys matching the prefix:
-     * e.g. ["test", "tell", "tectonic", "telephone", etc.].
+     * Returns a sorted array of keys matching the prefix:
+     * e.g. ["tell", "test", "tectonic", "telephone", etc.].
      */
     let nd = this._getFinalNode(prefix, 0, this.head);
     let keySet = [];
